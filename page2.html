@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700;800&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+
+    :root{
+      --bg1:#fff7f3;
+      --bg2:#fce7e5;
+      --bg3:#f7efe2;
+      --paper:#fffaf5;
+      --rose:#d97f90;
+      --peach:#dc9a73;
+      --soft:#a97873;
+      --shadow:0 20px 50px rgba(189, 122, 133, .18);
+    }
+
+    body{
+      min-height:100vh;
+      font-family:'Quicksand',sans-serif;
+      color:var(--soft);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.94) 0%, rgba(255,255,255,0) 32%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,.75) 0%, rgba(255,255,255,0) 24%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    .petals{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+
+    .petal{
+      position:absolute;
+      width:18px;
+      height:11px;
+      border-radius:16px 2px 16px 2px;
+      background:#efb2bc;
+      opacity:.45;
+      animation:floatPetal linear infinite;
+    }
+
+    .petal:nth-child(1){ left:6%; top:18%; animation-duration:13s; }
+    .petal:nth-child(2){ left:12%; top:75%; animation-duration:16s; background:#e7c28d; }
+    .petal:nth-child(3){ left:28%; top:8%; animation-duration:15s; }
+    .petal:nth-child(4){ left:74%; top:14%; animation-duration:13s; background:#f1c8d0; }
+    .petal:nth-child(5){ left:84%; top:72%; animation-duration:17s; background:#e7c28d; }
+    .petal:nth-child(6){ left:92%; top:26%; animation-duration:14s; }
+    .petal:nth-child(7){ left:52%; top:82%; animation-duration:18s; background:#f1c8d0; }
+    .petal:nth-child(8){ left:62%; top:10%; animation-duration:16s; }
+
+    @keyframes floatPetal{
+      0%{ transform:translate(0,0) rotate(0deg); }
+      50%{ transform:translate(22px,-26px) rotate(120deg); }
+      100%{ transform:translate(-8px,12px) rotate(240deg); }
+    }
+
+    .side-flower{
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:170px;
+      pointer-events:none;
+      z-index:1;
+      opacity:.95;
+    }
+
+    .side-flower.left{ left:0; }
+    .side-flower.right{ right:0; transform:scaleX(-1); }
+
+    .page{
+      position:relative;
+      z-index:2;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px 16px 90px;
+    }
+
+    .card{
+      width:min(780px, 100%);
+      background:var(--paper);
+      border-radius:34px;
+      padding:36px 24px 42px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-85px;
+      left:-60px;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:rgba(255,255,255,.5);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      bottom:-95px;
+      right:-70px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(255,255,255,.35);
+    }
+
+    .pin{
+      position:absolute;
+      top:20px;
+      right:28px;
+      font-size:2.8rem;
+      color:#b8b2b0;
+      transform:rotate(15deg);
+      z-index:3;
+    }
+
+    .top-note{
+      position:relative;
+      z-index:3;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:.78rem;
+      color:#c17d82;
+      margin-bottom:10px;
+    }
+
+    .title{
+      position:relative;
+      z-index:3;
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(3.2rem, 7vw, 5.4rem);
+      color:#dd7840;
+      line-height:1.05;
+      margin-bottom:18px;
+    }
+
+    .photo-frame{
+      position:relative;
+      z-index:3;
+      width:min(360px, 82vw);
+      margin:0 auto 18px;
+      background:#fff;
+      padding:12px 12px 20px;
+      box-shadow:0 16px 32px rgba(0,0,0,.12);
+      transform:rotate(-2deg);
+    }
+
+    .photo-frame img{
+      width:100%;
+      display:block;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      background:#f7f0eb;
+    }
+
+    .photo-label{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      font-family:'Great Vibes',cursive;
+      font-size:1.8rem;
+      color:#e07f49;
+      text-shadow:0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .date-note{
+      position:relative;
+      z-index:3;
+      margin:8px 0 18px;
+    }
+
+    .date-note .small{
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:.74rem;
+      color:#be847d;
+    }
+
+    .date-note .big{
+      margin-top:6px;
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem;
+      letter-spacing:.16em;
+      color:#b96345;
+    }
+
+    .message{
+      position:relative;
+      z-index:3;
+      max-width:580px;
+      margin:0 auto;
+      line-height:1.95;
+      font-size:1.18rem;
+      color:#8f6a66;
+    }
+
+    .message strong{
+      color:#c76878;
+    }
+
+    .footer{
+      position:relative;
+      z-index:3;
+      margin-top:22px;
+      font-size:.96rem;
+      color:#bf8b82;
+    }
+
+    .back-btn{
+      position:relative;
+      z-index:3;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      margin-top:26px;
+      padding:14px 28px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #efb0bb, #e7b38d);
+      color:white;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      box-shadow:0 16px 30px rgba(188, 119, 131, .18);
+      transition:.25s ease;
+    }
+
+    .back-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .music-btn{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:50;
+      border:none;
+      border-radius:999px;
+      padding:14px 18px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 12px 25px rgba(188,119,131,.18);
+      color:#b46e78;
+      font-weight:700;
+      cursor:pointer;
+      font-family:'Quicksand',sans-serif;
+    }
+
+    iframe#ytPlayer{
+      position:fixed;
+      left:-9999px;
+      top:-9999px;
+      width:1px;
+      height:1px;
+      border:0;
+    }
+
+    @media (max-width: 768px){
+      .side-flower{ width:100px; opacity:.78; }
+      .card{ border-radius:26px; padding:30px 16px 36px; }
+      .pin{ right:14px; top:14px; font-size:2.1rem; }
+      .message{ font-size:1.06rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+  </div>
+
+  <div class="side-flower left">
+    <svg viewBox="0 0 200 900" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path d="M44 900 C64 760, 82 650, 96 520 C110 390, 124 270, 144 110" stroke="#bbb188" stroke-width="4" fill="none"/>
+      <ellipse cx="95" cy="620" rx="26" ry="46" fill="#f0d8dd" transform="rotate(-22 95 620)"/>
+      <ellipse cx="120" cy="530" rx="28" ry="50" fill="#f4d8ae" transform="rotate(-16 120 530)"/>
+      <ellipse cx="144" cy="430" rx="30" ry="52" fill="#f1d6dc" transform="rotate(-14 144 430)"/>
+      <ellipse cx="169" cy="324" rx="31" ry="54" fill="#efd0d7" transform="rotate(-12 169 324)"/>
+      <circle cx="95" cy="620" r="8" fill="#d58d98"/>
+      <circle cx="120" cy="530" r="8" fill="#d4a363"/>
+      <circle cx="144" cy="430" r="8" fill="#d58d98"/>
+      <circle cx="169" cy="324" r="8" fill="#d4a363"/>
+    </svg>
+  </div>
+
+  <div class="side-flower right">
+    <svg viewBox="0 0 200 900" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path d="M44 900 C64 760, 82 650, 96 520 C110 390, 124 270, 144 110" stroke="#bbb188" stroke-width="4" fill="none"/>
+      <ellipse cx="95" cy="620" rx="26" ry="46" fill="#f0d8dd" transform="rotate(-22 95 620)"/>
+      <ellipse cx="120" cy="530" rx="28" ry="50" fill="#f4d8ae" transform="rotate(-16 120 530)"/>
+      <ellipse cx="144" cy="430" rx="30" ry="52" fill="#f1d6dc" transform="rotate(-14 144 430)"/>
+      <ellipse cx="169" cy="324" rx="31" ry="54" fill="#efd0d7" transform="rotate(-12 169 324)"/>
+      <circle cx="95" cy="620" r="8" fill="#d58d98"/>
+      <circle cx="120" cy="530" r="8" fill="#d4a363"/>
+      <circle cx="144" cy="430" r="8" fill="#d58d98"/>
+      <circle cx="169" cy="324" r="8" fill="#d4a363"/>
+    </svg>
+  </div>
+
+  <main class="page">
+    <section class="card">
+      <div class="pin">📎</div>
+      <div class="top-note">For Mahe &amp; Mashkura</div>
+      <h1 class="title">Happy Anniversary</h1>
+
+      <div class="photo-frame">
+        <img src="mahe-mashkura-couple.jpg" alt="Mahe and Mashkura together" loading="lazy">
+        <div class="photo-label">Mahe &amp; Mashkura</div>
+      </div>
+
+      <div class="date-note">
+        <div class="small">Save The Date</div>
+        <div class="big">29 MARCH 2025</div>
+      </div>
+
+      <div class="message">
+        To my sweetest person, <strong>thank you for every smile, every soft moment, and every beautiful memory we created together.</strong>
+        This one year has been full of warmth, laughter, comfort, and love.
+        <br><br>
+        <strong>Happy Anniversary, my love.</strong> May our bond stay beautiful, gentle, and full of blessings, today and in all the days ahead.
+      </div>
+
+      <div class="footer">Made with love ❤</div>
+
+      <a class="back-btn" href="index.html">Back to First Page</a>
+    </section>
+  </main>
+
+  <button class="music-btn" id="musicBtn" type="button">🎵 Play Song</button>
+
+  <script>
+    const SONG_ID = "8PTOkwze0Vw";
+    let playerLoaded = false;
+    let playing = false;
+
+    function updateMusicButton() {
+      const btn = document.getElementById("musicBtn");
+      btn.textContent = playing ? "🔇 Stop Song" : "🎵 Play Song";
+    }
+
+    function startMusic() {
+      if (playerLoaded) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.id = "ytPlayer";
+      iframe.src = `https://www.youtube.com/embed/${SONG_ID}?autoplay=1&loop=1&playlist=${SONG_ID}&controls=0&modestbranding=1&rel=0`;
+      iframe.allow = "autoplay";
+      document.body.appendChild(iframe);
+
+      playerLoaded = true;
+      playing = true;
+      localStorage.setItem("anniv_music", "on");
+      updateMusicButton();
+    }
+
+    function stopMusic() {
+      const old = document.getElementById("ytPlayer");
+      if (old) old.remove();
+      playerLoaded = false;
+      playing = false;
+      localStorage.setItem("anniv_music", "off");
+      updateMusicButton();
+    }
+
+    document.getElementById("musicBtn").addEventListener("click", function () {
+      if (playing) stopMusic();
+      else startMusic();
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem("anniv_music") === "on") {
+        startMusic();
+      } else {
+        updateMusicButton();
+      }
+    });
+  </script>
+</body>
+</html>
