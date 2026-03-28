@@ -16,16 +16,10 @@
       --bg1:#fff7f2;
       --bg2:#fde9ea;
       --bg3:#f9efe3;
-      --peach:#f7c8b6;
-      --rose:#e79aa8;
       --deep-rose:#c56c7c;
-      --gold:#d9a85f;
-      --cream:#fffdf9;
       --text:#8c5e63;
       --shadow:0 14px 35px rgba(188, 119, 131, 0.16);
     }
-
-    html { scroll-behavior: smooth; }
 
     body{
       min-height:100vh;
@@ -67,7 +61,7 @@
 
     .card{
       width:100%;
-      background:rgba(255,252,248,.74);
+      background:rgba(255,252,248,.78);
       border:1px solid rgba(255,255,255,.7);
       backdrop-filter: blur(8px);
       border-radius:34px;
@@ -84,7 +78,6 @@
       position:absolute;
       border-radius:50%;
       background:rgba(255,255,255,.42);
-      filter:blur(2px);
       z-index:0;
     }
 
@@ -179,6 +172,63 @@
       color:#c97181;
     }
 
+    .center-decor{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-width:130px;
+    }
+
+    .balloon-cluster{
+      position:relative;
+      width:92px;
+      height:92px;
+      margin-bottom:-8px;
+    }
+
+    .balloon{
+      position:absolute;
+      width:28px;
+      height:36px;
+      border-radius:50% 50% 48% 48%;
+      box-shadow:0 8px 16px rgba(188,119,131,.12);
+      animation:balloonFloat 3.5s ease-in-out infinite;
+    }
+
+    .balloon::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:34px;
+      width:1.5px;
+      height:36px;
+      background:rgba(170,130,120,.55);
+      transform:translateX(-50%);
+    }
+
+    .balloon::before{
+      content:"";
+      position:absolute;
+      bottom:-4px;
+      left:50%;
+      width:8px;
+      height:8px;
+      background:inherit;
+      transform:translateX(-50%) rotate(45deg);
+      border-radius:2px;
+    }
+
+    .balloon.one{ left:4px; top:22px; background:#efb0bb; animation-delay:.1s; }
+    .balloon.two{ left:30px; top:6px; background:#f0c58f; animation-delay:.4s; }
+    .balloon.three{ left:56px; top:24px; background:#f3c7d1; animation-delay:.8s; }
+
+    @keyframes balloonFloat{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+
     .heart{
       font-size:2.5rem;
       color:#dd7c8d;
@@ -189,6 +239,27 @@
     @keyframes beat{
       0%,100%{ transform:scale(1); }
       50%{ transform:scale(1.18); }
+    }
+
+    .cartoon-sticker{
+      width:128px;
+      height:128px;
+      border-radius:26px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 12px 24px rgba(188,119,131,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px;
+    }
+
+    .cartoon-sticker img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      border-radius:20px;
     }
 
     .year{
@@ -228,25 +299,26 @@
       padding:24px 22px;
       box-shadow:0 10px 24px rgba(188, 119, 131, .08);
       line-height:1.9;
-      font-size:1.05rem;
+      font-size:1.15rem;
+      font-family:'Playfair Display',serif;
+      color:#9b6b71;
     }
 
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:12px;
+    .anniv-signature{
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(2.8rem, 6vw, 4.2rem);
+      color:#d97889;
+      margin-top:8px;
+      line-height:1.05;
+    }
+
+    .anniv-subtitle{
+      margin-top:6px;
+      color:#b57d83;
+      letter-spacing:.12em;
+      font-size:.92rem;
+      text-transform:uppercase;
       margin-bottom:30px;
-    }
-
-    .chip{
-      background:#fff;
-      border-radius:999px;
-      padding:12px 18px;
-      color:#b36f73;
-      box-shadow:0 8px 18px rgba(188, 119, 131, .08);
-      font-weight:600;
-      font-size:.95rem;
     }
 
     .next-btn{
@@ -337,8 +409,10 @@
       .photos{ gap:12px; }
       .photo-ring{ width:145px; height:145px; }
       .photo-name{ font-size:1.6rem; }
-      .heart{ width:100%; }
+      .center-decor{ min-width:100%; }
       .subtitle{ letter-spacing:.1em; }
+      .cartoon-sticker{ width:100px; height:100px; }
+      .balloon-cluster{ width:84px; height:84px; }
     }
   </style>
 </head>
@@ -431,7 +505,19 @@
             <div class="photo-name">Mahe</div>
           </div>
 
-          <div class="heart">❤</div>
+          <div class="center-decor">
+            <div class="balloon-cluster" aria-hidden="true">
+              <span class="balloon one"></span>
+              <span class="balloon two"></span>
+              <span class="balloon three"></span>
+            </div>
+
+            <div class="heart">❤</div>
+
+            <div class="cartoon-sticker" aria-hidden="true">
+              <img src="cat-bouquet.png" alt="Cute cat with bouquet">
+            </div>
+          </div>
 
           <div class="photo-block">
             <div class="photo-ring">
@@ -442,22 +528,17 @@
         </div>
 
         <div class="year">1 Year</div>
-        <div class="year-text">Of Love, Dua, Smiles & Memories</div>
+        <div class="year-text">Of Love, Dua, Smiles &amp; Memories</div>
 
         <div class="date-pill">29 March 2025</div>
 
         <div class="message">
-          One year with you feels soft, beautiful, and full of blessings.
-          Thank you for the love, kindness, comfort, and happiness you bring into life.
-          Every small moment with you became a memory worth keeping forever.
+          “In all the world, there is no heart for me like yours.<br>
+          In all the world, there is no love for you like mine.”
         </div>
 
-        <div class="chips">
-          <div class="chip">❤ Sweet Conversations</div>
-          <div class="chip">🌸 Warm Memories</div>
-          <div class="chip">✨ Our Beautiful Story</div>
-          <div class="chip">🌙 Forever Special</div>
-        </div>
+        <div class="anniv-signature">Happy Anniversary</div>
+        <p class="anniv-subtitle">Here's to forever, together ✦</p>
 
         <a class="next-btn" href="page2.html">Next Page ❤</a>
       </div>
