@@ -17,8 +17,6 @@
       --bg2:#fce7e5;
       --bg3:#f7efe2;
       --paper:#fffaf5;
-      --rose:#d97f90;
-      --peach:#dc9a73;
       --soft:#a97873;
       --shadow:0 20px 50px rgba(189, 122, 133, .18);
     }
@@ -72,7 +70,7 @@
       position:absolute;
       top:0;
       bottom:0;
-      width:170px;
+      width:220px;
       pointer-events:none;
       z-index:1;
       opacity:.95;
@@ -92,7 +90,7 @@
     }
 
     .card{
-      width:min(780px, 100%);
+      width:min(920px, 100%);
       background:var(--paper);
       border-radius:34px;
       padding:36px 24px 42px;
@@ -134,6 +132,45 @@
       z-index:3;
     }
 
+    .corner-flower{
+      position:absolute;
+      width:120px;
+      height:120px;
+      z-index:3;
+      opacity:.95;
+    }
+
+    .corner-flower.left{
+      top:18px;
+      left:18px;
+    }
+
+    .corner-flower.right{
+      top:18px;
+      right:70px;
+      transform:scaleX(-1);
+    }
+
+    .bottom-bouquet{
+      width:min(240px, 68%);
+      margin:24px auto 0;
+      opacity:.98;
+      position:relative;
+      z-index:3;
+    }
+
+    .bottom-bouquet img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .corner-flower svg{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
     .top-note{
       position:relative;
       z-index:3;
@@ -157,7 +194,7 @@
     .photo-frame{
       position:relative;
       z-index:3;
-      width:min(360px, 82vw);
+      width:min(540px, 92vw);
       margin:0 auto 18px;
       background:#fff;
       padding:12px 12px 20px;
@@ -280,6 +317,8 @@
       .card{ border-radius:26px; padding:30px 16px 36px; }
       .pin{ right:14px; top:14px; font-size:2.1rem; }
       .message{ font-size:1.06rem; }
+      .corner-flower{ width:82px; height:82px; }
+      .corner-flower.right{ right:42px; }
     }
   </style>
 </head>
@@ -326,6 +365,35 @@
   <main class="page">
     <section class="card">
       <div class="pin">📎</div>
+
+      <div class="corner-flower left" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 110 C35 80, 48 55, 78 24" stroke="#b8ad84" stroke-width="3" fill="none"/>
+          <ellipse cx="72" cy="28" rx="16" ry="20" fill="#f0d8dd"/>
+          <ellipse cx="90" cy="46" rx="14" ry="18" fill="#f4d8ae"/>
+          <ellipse cx="58" cy="50" rx="14" ry="18" fill="#f4ccd5"/>
+          <ellipse cx="78" cy="66" rx="14" ry="18" fill="#f6d7c6"/>
+          <circle cx="72" cy="28" r="5" fill="#d58d98"/>
+          <circle cx="90" cy="46" r="5" fill="#d4a363"/>
+          <circle cx="58" cy="50" r="5" fill="#d58d98"/>
+          <circle cx="78" cy="66" r="5" fill="#d4a363"/>
+        </svg>
+      </div>
+
+      <div class="corner-flower right" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 110 C35 80, 48 55, 78 24" stroke="#b8ad84" stroke-width="3" fill="none"/>
+          <ellipse cx="72" cy="28" rx="16" ry="20" fill="#f0d8dd"/>
+          <ellipse cx="90" cy="46" rx="14" ry="18" fill="#f4d8ae"/>
+          <ellipse cx="58" cy="50" rx="14" ry="18" fill="#f4ccd5"/>
+          <ellipse cx="78" cy="66" rx="14" ry="18" fill="#f6d7c6"/>
+          <circle cx="72" cy="28" r="5" fill="#d58d98"/>
+          <circle cx="90" cy="46" r="5" fill="#d4a363"/>
+          <circle cx="58" cy="50" r="5" fill="#d58d98"/>
+          <circle cx="78" cy="66" r="5" fill="#d4a363"/>
+        </svg>
+      </div>
+
       <div class="top-note">For Mahe &amp; Mashkura</div>
       <h1 class="title">Happy Anniversary</h1>
 
@@ -347,6 +415,10 @@
       </div>
 
       <div class="footer">Made with love ❤</div>
+
+      <div class="bottom-bouquet" aria-hidden="true">
+        <img src="bouquet-bunny.png" alt="Cute bouquet">
+      </div>
 
       <a class="back-btn" href="index.html">Back to First Page</a>
     </section>
